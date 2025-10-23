@@ -3,21 +3,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Building Docker image..."'
-                sh 'docker build -t myflaskapp .'
+                bat 'echo "Building Docker image..."'
+                bat 'docker build -t myflaskapp .'
             }
         }
         stage('Test') {
             steps {
-                sh 'echo "Running tests..."'
-                sh 'pytest || echo "No tests yet"'
+                bat 'echo "Running tests..."'
+                bat 'pytest || echo "No tests yet"'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Deploying to Kubernetes..."'
-                sh 'kubectl apply -f deployment.yaml'
-                sh 'kubectl apply -f service.yaml'
+                bat 'echo "Deploying to Kubernetes..."'
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
             }
         }
     }
